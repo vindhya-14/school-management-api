@@ -1,23 +1,23 @@
-// app.js
 const express = require("express");
-const promisePool = require("./db/connection"); // Import the database pool
+const bodyParser = require("body-parser");
+require("dotenv").config();
+
+const schoolRoutes = require("./routes/schoolRoutes"); // Import routes
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.get("/", async (req, res) => {
-  try {
-    // Example query to fetch users
-    const [rows, fields] = await promisePool.query(
-      "SELECT * FROM users LIMIT 1"
-    );
-    res.json(rows); // Send back the query result
-  } catch (err) {
-    console.error("❌ Error executing query:", err.stack);
-    res.status(500).send("Database query failed");
-  }
+// Middleware
+app.use(bodyParser.json()); // Parse JSON body
+
+// Routes
+app.use("/api", schoolRoutes); // Prefix your routes with /api
+
+// Root route for testing
+app.get("/", (req, res) => {
+  res.send("🎉 School Management API is Live!");
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
