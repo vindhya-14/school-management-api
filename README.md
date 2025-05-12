@@ -65,8 +65,7 @@ API is hosted at:
 
 ## 📫 Postman Collection
 
-👉https://.postman.co/workspace/My-Workspace~7fb90ddc-319d-47b5-8618-eea6921cea04/collection/44016323-7fa60f90-d6d7-4a13-8c61-52e64bd85187?action=share&creator=44016323
-
+👉https://web.postman.co/workspace/7fb90ddc-319d-47b5-8618-eea6921cea04
 ---
 
 ## 📁 Setup Instructions
