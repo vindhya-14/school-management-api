@@ -1,23 +1,19 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const app = express();
+const schoolRoutes = require("./routes/schoolRoutes"); // Import the route file
 require("dotenv").config();
 
-const schoolRoutes = require("./routes/schoolRoutes"); // Import routes
-
-const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Middleware
-app.use(bodyParser.json()); // Parse JSON body
+app.use(express.json()); // to parse JSON request bodies
 
-// Routes
-app.use("/api", schoolRoutes); // Prefix your routes with /api
+// ✅ Mount the school routes with /api prefix
+app.use("/api", schoolRoutes);
 
-// Root route for testing
 app.get("/", (req, res) => {
-  res.send("🎉 School Management API is Live!");
+  res.send("School Management API is running");
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
